@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>济州岛轻松游 - 您的便捷之旅从这里开始</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #4a90e2, #7bb3f0);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+        
+        main {
+            margin-top: 80px;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/济州岛首页背景.svg');
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .attraction-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .food-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-button {
+            background: #ff6b6b;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background: #ff5252;
+        }
+        
+        .section {
+            padding: 4rem 0;
+            background: white;
+            margin: 2rem 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #4a90e2;
+            font-size: 2.5rem;
+        }
+        
+        .attractions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .attraction-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .attraction-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .attraction-card h3 {
+            color: #4a90e2;
+            margin-bottom: 1rem;
+        }
+        
+        .highlight {
+            background: #e3f2fd;
+            padding: 1rem;
+            border-left: 4px solid #4a90e2;
+            margin: 1rem 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .transport-info {
+            background: #f0f8ff;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+        
+        .itinerary {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+        
+        .day-plan {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 5px;
+            border-left: 4px solid #ff6b6b;
+        }
+        
+        .app-recommendation {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+        
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .app-card {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .attractions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">济州岛最完整最直观的攻略</div>
+            <ul class="nav-links">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#attractions">精选景点</a></li>
+                <li><a href="#itineraries">行程推荐</a></li>
+                <li><a href="#transport">交通指南</a></li>
+                <li><a href="#practical">实用信息</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 首页 -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>欢迎来到济州岛！</h1>
+                <p>您的便捷之旅从这里开始 - 最实用的济州岛旅游指南</p>
+                <a href="#attractions" class="cta-button">开始探索</a>
+            </div>
+        </section>
+
+        <div class="container">
+            <section class="section">
+                <h2>济州岛攻略</h2>
+                <div class="attractions-grid">
+                    <div class="attraction-card">
+                        <h3>🌊 绝美自然风光</h3>
+                        <p>从汉拿山的壮丽到海岸线的温柔，济州岛拥有韩国最美的自然景观，四季皆宜的旅游胜地。</p>
+                    </div>
+                    <div class="attraction-card">
+                        <h3>🚌 交通便捷指南</h3>
+                        <p>详细的交通攻略，让您轻松掌握公交、打车、包车等各种出行方式，配合Naver Map使用更便捷。</p>
+                    </div>
+                    <div class="attraction-card">
+                        <h3>🍜 地道美食文化</h3>
+                        <p>黑猪肉烤肉、海鲜料理、醒酒汤、辣炒章鱼🐙、橘子🍊周边特产，品味济州岛独特的美食文化，每一口都是海岛的味道。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 精选景点 -->
+            <section id="attractions" class="section">
+                <h2>🏞️ 精选景点</h2>
+                <p style="text-align: center; margin-bottom: 2rem; color: #666;">基于真实游客体验的热门景点推荐，包含详细交通和实用信息</p>
+                
+                <div class="attractions-grid">
+                    <div class="attraction-card">
+                        <img src="images/狭才海滩.JPG" alt="狭才海滩" class="attraction-image">
+                        <h3>🏖️ 狭才海滩</h3>
+                        <p><strong>亮点：</strong> 济州岛西部最美海滩，白色沙滩配翡翠色海水，是拍照圣地</p>
+                        <p><strong>推荐游玩时长：</strong> 2-3小时</p>
+                        
+                        <div class="transport-info">
+                            <h4>🚌 详细交通：</h4>
+                            <ul>
+                                <li><strong>公交：</strong> 从济州市区乘坐202路至狭才海滩站（约40分钟，1,200韩元）</li>
+                                <li><strong>Kakao T打车：</strong> 从济州市区约30分钟，费用约15,000韩元</li>
+                                <li><strong>KakaoMap搜索：</strong> "협재해수욕장"</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="highlight">
+                            <strong>💡 实用贴士：</strong> 海滩附近有很多网红咖啡厅，推荐lazy pump咖啡厅。最佳拍照时间是下午4-6点，光线柔和。
+                        </div>
+                        
+                        <p><strong>周边推荐：</strong></p>
+                        <ul>
+                            <li>Lazy Pump咖啡厅：可以走到礁石上近距离感受海浪</li>
+                            <li>涯月邑咖啡街：步行可达，有多家海景咖啡厅</li>
+                            <li>参考价格：咖啡 8,000-12,000韩元</li>
+                        </ul>
+                    </div>
+
+                    <div class="attraction-card">
+                        <img src="images/柱状节理带.jpg" alt="柱状节理带" class="attraction-image">
+                        <h3>🗿 柱状节理带</h3>
+                        <p><strong>亮点：</strong> 独特的火山岩地质奇观，大自然的鬼斧神工</p>
+                        <p><strong>推荐游玩时长：</strong> 1-2小时</p>
+                        
+                        <div class="transport-info">
+                            <h4>🚌 详细交通：</h4>
+                            <ul>
+                                <li><strong>公交：</strong> 从西归浦市区乘坐282路至柱状节理带站</li>
+                                <li><strong>步行：</strong> 从中文旅游区步行约15分钟</li>
+                                <li><strong>KakaoMap搜索：</strong> "주상절리대"</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="highlight">
+                            <strong>💡 实用贴士：</strong> 最佳拍照时间是上午10-11点，避开人流高峰。可与中文旅游区其他景点串联游览。
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <img src="images/涯月邑咖啡馆.jpg" alt="涯月邑咖啡馆" class="attraction-image">
+                        <h3>☕ 涯月邑咖啡街</h3>
+                        <p><strong>亮点：</strong> 海边咖啡馆聚集地，玻璃海特别美，可以看到蓝色海底</p>
+                        <p><strong>推荐游玩时长：</strong> 2-3小时</p>
+                        
+                        <div class="transport-info">
+                            <h4>🚌 详细交通：</h4>
+                            <ul>
+                                <li><strong>公交：</strong> 从济州市区乘坐202路至涯月邑（约30分钟）</li>
+                                <li><strong>Kakao T：</strong> 从济州市区约25分钟，费用约12,000韩元</li>
+                                <li><strong>KakaoMap搜索：</strong> "애월읍"</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="highlight">
+                            <strong>💡 实用贴士：</strong> 推荐小红书推荐的烤肉饭，人均80韩元。晴天时海水呈现玻璃海效果，最适合拍照。
+                        </div>
+                        
+                        <p><strong>美食推荐：</strong></p>
+                        <ul>
+                            <li>烤肉饭：人均80,000韩元，味道很棒</li>
+                            <li>海景咖啡厅：咖啡8,000-15,000韩元</li>
+                        </ul>
+                    </div>
+
+                    <div class="attraction-card">
+                        <img src="images/城山日出峰.jpg" alt="城山日出峰" class="attraction-image">
+                        <h3>🌅 城山日出峰</h3>
+                        <p><strong>亮点：</strong> 世界自然遗产，观赏日出的最佳地点，火山口景观壮观</p>
+                        <p><strong>推荐游玩时长：</strong> 2-3小时</p>
+                        
+                        <div class="transport-info">
+                            <h4>🚌 详细交通：</h4>
+                            <ul>
+                                <li><strong>公交：</strong> 从济州市区乘坐102路直达城山日出峰</li>
+                                <li><strong>包车：</strong> 最便捷选择，可与牛岛串联</li>
+                                <li><strong>KakaoMap搜索：</strong> "성산일출봉"</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="highlight">
+                            <strong>💡 实用贴士：</strong> 看日出需5:30前到达。平时游览建议上午前往，下午可去牛岛。登顶约需30分钟。
+                        </div>
+                        
+                        <p><strong>实用信息：</strong></p>
+                        <ul>
+                            <li>开放时间：日出前1小时-20:00</li>
+                            <li>门票：5,000韩元</li>
+                            <li>最佳拍照点：山顶火山口、海女表演观景台</li>
+                        </ul>
+                    </div>
+
+                    <div class="attraction-card">
+                        <img src="images/牛岛快艇1.jpg" alt="牛岛快艇" class="attraction-image">
+                        <h3>🚤 牛岛</h3>
+                        <p><strong>亮点：</strong> 被誉为济州岛的马尔代夫，清澈海水、白色沙滩</p>
+                        <p><strong>推荐游玩时长：</strong> 半天</p>
+                        
+                        <div class="transport-info">
+                            <h4>🚌 详细交通：</h4>
+                            <ul>
+                                <li><strong>公交+轮渡：</strong> 乘坐701路或710路至城山港，再乘轮渡15分钟</li>
+                                <li><strong>包车：</strong> 最便捷，可与城山日出峰一起安排</li>
+                                <li><strong>Naver地图搜索：</strong> "성산포항" (城山港)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="highlight">
+                            <strong>💡 实用贴士：</strong> 建议与城山日出峰安排在同一天。岛上可租借电动车环岛，约需2-3小时。
+                        </div>
+                        
+                        <img src="images/牛岛花生冰淇凌.jpg" alt="牛岛花生冰淇淋" class="food-image">
+                        <p><strong>必尝美食：</strong> 牛岛特色花生冰淇淋，香甜可口！</p>
+                        
+                        <p><strong>实用信息：</strong></p>
+                        <ul>
+                            <li>轮渡时间：8:00-17:00，每30分钟一班</li>
+                            <li>轮渡费用：往返5,500韩元</li>
+                            <li>岛上交通：电动车租赁20,000韩元/天（重点：任何要求你抵押护照的门店 say NO）</li>
+                            <li>可尝：花生冰淇淋、海女料理（做好味道一般的心理预期）</li>
+                        </ul>
+                    </div>
+
+                    <div class="attraction-card">
+                        <img src="images/BHC炸鸡🍗.jpg" alt="BHC炸鸡" class="attraction-image">
+                        <h3>🍗 BHC炸鸡</h3>
+                        <p><strong>亮点：</strong> 当地人推荐的炸鸡店，芝士味道独特，口感极佳</p>
+                        <p><strong>推荐游玩时长：</strong> 1小时</p>
+                        
+                        <div class="transport-info">
+                            <h4>🚌 详细交通：</h4>
+                            <ul>
+                                <li><strong>位置：</strong> 城山日出峰附近，步行可达</li>
+                                <li><strong>营业时间：</strong> 11:00-22:00</li>
+                                <li><strong>Naver搜索：</strong> "BHC치킨"</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="highlight">
+                            <strong>💡 实用贴士：</strong> 可以选双拼，芝士味道独特，双人2.6w韩元，口味很棒。
+                        </div>
+                        
+                        <p><strong>推荐搭配：</strong></p>
+                        <ul>
+                            <li>双拼炸鸡：26,000韩元（2-3人份）</li>
+                            <li>芝士味+蒜蓉味：最受欢迎组合</li>
+                            <li>可配啤酒或可乐</li>
+                        </ul>
+                    </div>
+
+                    <div class="attraction-card">
+                        <h3>🛍️ 济州市区免税店</h3>
+                        <p><strong>亮点：</strong> 购物天堂，化妆品、奢侈品应有尽有</p>
+                        <p><strong>推荐游玩时长：</strong> 2-3小时</p>
+                        
+                        <div class="transport-info">
+                            <h4>🚌 详细交通：</h4>
+                            <ul>
+                                <li><strong>位置：</strong> 济州市中心，多家免税店聚集</li>
+                                <li><strong>营业时间：</strong> 9:00-21:00</li>
+                                <li><strong>KakaoMap搜索：</strong> "제주 면세점"</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="highlight">
+                            <strong>💡 实用贴士：</strong> 新罗和乐天免税店都在7点关门。可以买到mucu的包包（帮朋友买的），还有各种化妆品和护肤品。
+                        </div>
+                        
+                        <p><strong>购物推荐：</strong></p>
+                        <ul>
+                            <li>化妆品：比国内便宜20-30%</li>
+                            <li>奢侈品包包：款式齐全</li>
+                            <li>当地特产：济州岛橘子🍊周边</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 小众景点 -->
+            <section id="hidden-gems" class="section">
+                <h2>🔍 小众景点</h2>
+                <p style="text-align: center; margin-bottom: 2rem; color: #666;">适合深度游的特色景点，体验不一样的济州岛</p>
+                
+                <div class="attractions-grid">
+                    <div class="attraction-card">
+                        <h3>🏔️ 汉拿山国立公园</h3>
+                        <p><strong>亮点：</strong> 韩国最高峰，四季景色各异，春季杜鹃花、秋季红叶尤为壮观</p>
+                        <p><strong>推荐游玩时长：</strong> 半天至一天（根据登山路线）</p>
+                        
+                        <div class="transport-info">
+                            <h4>🚌 交通指南：</h4>
+                            <ul>
+                                <li><strong>公交：</strong> 从济州市外巴士客运站乘坐740路至御里牧入口（约40分钟）</li>
+                                <li><strong>打车：</strong> 从济州市区约30-40分钟，费用约15,000-20,000韩元</li>
+                                <li><strong>路程时间：</strong> 市区到登山口约40分钟，登山往返3-6小时</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="highlight">
+                            <strong>💡 便捷提示：</strong> 推荐御里牧路线，相对轻松且交通便利。建议早上出发，需提前在官网预约。
+                        </div>
+                        
+                        <p><strong>实用信息：</strong></p>
+                        <ul>
+                            <li>开放时间：5:30-13:00（根据季节调整）</li>
+                            <li>门票：免费</li>
+                            <li>最佳季节：春季（4-5月）、秋季（10-11月）</li>
+                            <li>Naver Map搜索："한라산 어리목 탐방로"</li>
+                        </ul>
+                    </div>
+
+                    <div class="attraction-card">
+                        <h3>🌊 正房瀑布</h3>
+                        <p><strong>亮点：</strong> 亚洲唯一直接流入海中的瀑布，壮观的海岸瀑布景观</p>
+                        <p><strong>推荐游玩时长：</strong> 1-2小时</p>
+                        
+                        <div class="transport-info">
+                            <h4>🚌 交通指南：</h4>
+                            <ul>
+                                <li><strong>公交：</strong> 从西归浦市区乘坐5路至正房瀑布站（约15分钟）</li>
+                                <li><strong>步行：</strong> 从西归浦港步行约10分钟</li>
+                                <li><strong>路程时间：</strong> 从济州市区约1小时，西归浦市区约15分钟</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="highlight">
+                            <strong>💡 便捷提示：</strong> 夏季水量充沛最为壮观，可与天地渊瀑布一起游览。
+                        </div>
+                        
+                        <p><strong>实用信息：</strong></p>
+                        <ul>
+                            <li>开放时间：8:00-18:00</li>
+                            <li>门票：2,000韩元</li>
+                            <li>最佳拍照时间：上午10-11点</li>
+                            <li>Naver Map搜索："정방폭포"</li>
+                        </ul>
+                    </div>
+
+                    <div class="attraction-card">
+                        <h3>🏘️ 济州民俗村</h3>
+                        <p><strong>亮点：</strong> 展示济州岛传统文化和生活方式的民俗博物馆，了解济州岛的文化历史</p>
+                        <p><strong>推荐游玩时长：</strong> 2-3小时</p>
+                        
+                        <div class="transport-info">
+                            <h4>🚌 交通指南：</h4>
+                            <ul>
+                                <li><strong>公交：</strong> 从济州市区乘坐202路至民俗村入口（约50分钟）</li>
+                                <li><strong>打车：</strong> 从济州市区约25分钟，费用约18,000韩元</li>
+                                <li><strong>路程时间：</strong> 从市区约50分钟，游览需2-3小时</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="highlight">
+                            <strong>💡 便捷提示：</strong> 可以体验传统韩服拍照，了解济州岛独特的海女文化。
+                        </div>
+                        
+                        <p><strong>实用信息：</strong></p>
+                        <ul>
+                            <li>开放时间：8:30-18:00</li>
+                            <li>门票：11,000韩元</li>
+                            <li>特色体验：传统工艺制作、韩服体验</li>
+                            <li>Naver Map搜索："제주민속촌"</li>
+                        </ul>
+                    </div>
+
+                    <div class="attraction-card">
+                        <h3>🌋 山君nofollow</h3>
+                        <p><strong>亮点：</strong> 济州岛著名的火山口，秋季芦苇花盛开时最为美丽，摄影爱好者天堂</p>
+                        <p><strong>推荐游玩时长：</strong> 1-2小时</p>
+                        
+                        <div class="transport-info">
+                            <h4>🚌 交通指南：</h4>
+                            <ul>
+                                <li><strong>公交：</strong> 从济州市区乘坐240路至山君nofollow入口（约45分钟）</li>
+                                <li><strong>打车：</strong> 从济州市区约30分钟，费用约20,000韩元</li>
+                                <li><strong>路程时间：</strong> 从市区约45分钟，环绕火山口约1小时</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="highlight">
+                            <strong>💡 便捷提示：</strong> 秋季（10-11月）芦苇花盛开最美，可与汉拿山一起安排游览。
+                        </div>
+                        
+                        <p><strong>实用信息：</strong></p>
+                        <ul>
+                            <li>开放时间：9:00-18:00</li>
+                            <li>门票：6,000韩元</li>
+                            <li>最佳季节：秋季芦苇花期</li>
+                            <li>Naver Map搜索："산굼부리"</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 行程推荐 -->
+            <section id="itineraries" class="section">
+                <h2>📅 行程推荐</h2>
+                <p style="text-align: center; margin-bottom: 2rem; color: #666;">基于最新热门攻略的4天3夜精华游，涵盖网红打卡地和地道美食体验</p>
+                
+                <div class="itinerary">
+                    <h3>🔥 济州岛全网最全攻略 - 4天3夜</h3>
+                    <p><strong>适合人群：</strong> 想要深度体验济州岛的游客，涵盖热门景点、网红咖啡厅和地道美食</p>
+                    
+                    <div class="day-plan">
+                        <h4>DAY1：市区逛吃 + 咸德海水浴场 + 月汀里</h4>
+                        <ul>
+                            <li><strong>🏖️ 咸德海水浴场：</strong> 果壳海、沙滩、小山峰，防风咖啡店、餐厅、超市很多，个人觉得比挟才神秘一些</li>
+                            <li><strong>🌙 月汀里：</strong> 
+                                <ul>
+                                    <li><strong>①Mou moon咖啡厅：</strong> 网红打卡点，人山人海，晴天的很，来都来了，打个卡泡了</li>
+                                    <li><strong>②Mongle云朵饼干：</strong> 搬迁了，很多帖子里还是老地址，买了一份感觉味道也一般，没有get到为什么这么火</li>
+                                    <li><strong>价格：</strong> 老奶奶烤鱿鱼 50元/只，马路边的小店，倒反而这个值得品尝</li>
+                                </ul>
+                            </li>
+                            <li><strong>🛍️ 市区逛吃：</strong> ①新罗免税店②乐天免税店③七星路④宝健路</li>
+                        </ul>
+                        <div class="transport-info">
+                            <strong>🚌 交通：</strong> 市区→咸德海水浴场→月汀里，建议拼车或使用Naver地图导航公交
+                        </div>
+                    </div>
+                    
+                    <div class="day-plan">
+                        <h4>DAY2：牛岛及周边一日游</h4>
+                        <ul>
+                            <li><strong>🌅 城山日出峰：</strong> 早点去！我8点就到了，几乎没人打卡，来晚了就全是拍照打卡的人，根本没法观景</li>
+                            <li><strong>🏝️ 涉地可支：</strong> ①海角灯塔②Yurimi美术馆③海边栈道，这里交通很不便利，天气不好不建议去，这里的景色和日出峰没区别</li>
+                            <li><strong>🐄 牛岛：</strong> 来济州一定得来，城山港轮渡10分钟，申请50元一天，环岛骑行卡景海，快艇游风大，牛头峰在晴天有种法罗群岛的孤独感，缺点就是网红人山人海，甚至在车道上打卡</li>
+                        </ul>
+                        <div class="transport-info">
+                            <strong>🚌 交通：</strong> 城山港轮渡往返牛岛，建议租电动车环岛游览
+                        </div>
+                    </div>
+                    
+                    <div class="day-plan">
+                        <h4>DAY3：西线海景 + 网红咖啡街</h4>
+                        <ul>
+                            <li><strong>🌊 涯月邑：</strong> 有很多网红咖啡店，到处都是人挤人拍照，景色晴天超棒</li>
+                            <li><strong>☕ 网红咖啡厅推荐：</strong>
+                                <ul>
+                                    <li><strong>①Team Blow：</strong> 网红点，没有长焦或晴天都可以不来，长焦才能拍出网红图的压缩感</li>
+                                    <li><strong>②Bomnal：</strong> 这家装修独特，晚霞时间很好看</li>
+                                    <li><strong>③Lazy Pump：</strong> 网红级利亚风装修+海边钢琴</li>
+                                </ul>
+                            </li>
+                            <li><strong>🏖️ 挟才海水浴场：</strong> 个人心里的TOP1，在体验上特别好，店铺很多，能玩、能吃、能买</li>
+                            <li><strong>🌪️ 风车海滩：</strong> 风电行业的我内心毫无波澜😂</li>
+                        </ul>
+                        <div class="transport-info">
+                            <strong>🚌 交通：</strong> 202路公交可达挟才海滩
+                        </div>
+                    </div>
+                    
+                    <div class="day-plan">
+                        <h4>DAY4：南线西归浦市一日游</h4>
+                        <ul>
+                            <li><strong>🌋 柱状节理带：</strong> 比较独特的火山岩景观，打卡一下10分钟就够了</li>
+                            <li><strong>☕ 橘子咖啡厅：</strong> 拍照出片，吃喝都一般</li>
+                            <li><strong>🛍️ 西归浦偶来市场：</strong> 菜市场+美食街，类似东门市场，物价比市区略低，可以买点伴手礼带回去</li>
+                            <li><strong>🏛️ 泰迪熊博物馆：</strong> 门票60，有兴趣可以去一下</li>
+                        </ul>
+                        <div class="transport-info">
+                            <strong>🚌 交通：</strong> 西归浦市区景点步行可达，或乘坐6路公交
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="highlight">
+                    <h4>🍗 必吃美食推荐：</h4>
+                    <ul>
+                        <li><strong>BHC炸鸡：</strong> 济州岛必吃，比国内的更香更脆</li>
+                        <li><strong>黑猪肉烤肉：</strong> 济州岛特色，肉质鲜美</li>
+                        <li><strong>海女料理：</strong> 牛岛特色（一吃一个不吱声，主打嘴硬拍照📷）</li>
+                        <li><strong>花生冰淇淋：</strong> 牛岛特产，必须尝试（拍照📷入镜）</li>
+                        <li><strong>老奶奶烤鱿鱼：</strong> 月汀里路边摊，地道小食</li>
+
+                    </ul>
+                </div>
+                <div class="warning">
+                    <strong>⚠️ 贴心提醒：</strong> 
+                    <ul>
+                        <li>网红景点人多，建议早上或傍晚前往</li>
+                        <li>天气对景色影响很大，晴天和阴天体验差别巨大</li>
+                        <li>提前下载离线地图，部分地区信号不好</li>
+                        <li>租车（拼车：可选择小红书发帖）比公交更方便，可以灵活调整行程</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 交通指南 -->
+            <section id="transport" class="section">
+                <h2>🚌 交通指南</h2>
+                <p style="text-align: center; margin-bottom: 2rem; color: #666;">详细的交通攻略，让您在济州岛出行无忧</p>
+                
+                <div class="app-recommendation">
+                    <h3>📱 必备导航神器：Naver Map</h3>
+                    <p>在济州岛旅行，Naver Map是您最可靠的导航伙伴！</p>
+                    
+                    <div class="app-grid">
+                        <div class="app-card">
+                            <h4>🎯 为什么选择Naver Map？</h4>
+                            <ul>
+                                <li><strong>定位精准：</strong> 在韩国本土准确度远超其他地图软件</li>
+                                <li><strong>实时公交：</strong> 提供准确的公交到站时间和路线信息</li>
+                                <li><strong>中文搜索：</strong> 支持中文地名搜索，如"汉拿山"、"城山日出峰"</li>
+                                <li><strong>步行导航：</strong> 详细的步行路线，包括地下通道和天桥</li>
+                                <li><strong>离线功能：</strong> 下载离线地图，无网络也能使用</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="app-card">
+                            <h4>📲 下载和使用教程</h4>
+                            <ol>
+                                <li><strong>下载：</strong> App Store或Google Play搜索"Naver Map"</li>
+                                <li><strong>语言设置：</strong> 进入设置选择中文界面</li>
+                                <li><strong>搜索技巧：</strong> 可直接输入中文景点名称</li>
+                                <li><strong>公交查询：</strong> 点击"대중교통"（公共交通）查看路线</li>
+                                <li><strong>收藏功能：</strong> 提前收藏常用地点，方便快速导航</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="warning">
+                        <strong>⚠️ 重要提醒：</strong> 高德地图、百度地图在韩国可能存在定位偏差或信息不全的问题，强烈建议使用Naver Map确保准确导航。
+                    </div>
+                </div>
+                
+                <div class="attraction-card">
+                    <h3>✈️ 机场交通</h3>
+                    <h4>从济州国际机场到市区：</h4>
+                    <ul>
+                        <li><strong>机场巴士：</strong> 
+                            <ul>
+                                <li>600路：前往济州市区，约30分钟，费用1,200韩元</li>
+                                <li>780路：前往中文旅游区，约60分钟，费用1,200韩元</li>
+                                <li>运营时间：6:00-22:00，每15-20分钟一班</li>
+                            </ul>
+                        </li>
+                        <li><strong>出租车：</strong> 到济州市区约15-20分钟，费用约8,000-12,000韩元</li>
+                        <li><strong>租车：</strong> 机场内有多家租车公司柜台</li>
+                    </ul>
+                    
+                    <div class="highlight">
+                        <strong>💡 Naver Map使用：</strong> 在机场搜索"제주공항"，可查看所有公交线路和实时到站信息。
+                    </div>
+                </div>
+                
+                <div class="attraction-card">
+                    <h3>🚌 公共交通</h3>
+                    <h4>济州岛公交系统：</h4>
+                    <ul>
+                        <li><strong>市内公交：</strong> 蓝色车身，主要在济州市区运行，费用1,200韩元</li>
+                        <li><strong>市外公交：</strong> 绿色车身，连接各大景点，费用1,200-2,300韩元</li>
+                        <li><strong>支付方式：</strong> 现金或T-money卡（推荐购买T-money卡）</li>
+                        <li><strong>运营时间：</strong> 一般6:00-22:00，部分线路到23:00</li>
+                    </ul>
+                    
+                    <h4>主要旅游线路：</h4>
+                    <ul>
+                        <li><strong>201路：</strong> 济州市区 ↔ 城山日出峰（约1小时）</li>
+                        <li><strong>202路：</strong> 济州市区 ↔ 山君nofollow ↔ 民俗村（约45分钟）</li>
+                        <li><strong>740路：</strong> 济州市区 ↔ 汉拿山御里牧（约40分钟）</li>
+                        <li><strong>6路：</strong> 西归浦市区内，连接各瀑布景点</li>
+                    </ul>
+                    
+                    <div class="highlight">
+                        <strong>💡 Naver Map公交功能：</strong> 输入起点和终点，选择"대중교통"，可查看详细路线、换乘信息和实时到站时间。
+                    </div>
+                </div>
+                
+                <div class="attraction-card">
+                    <h3>🚗 包车/打车</h3>
+                    <h4>包车服务：</h4>
+                    <ul>
+                        <li><strong>半日游：</strong> 4小时约80,000-120,000韩元</li>
+                        <li><strong>全日游：</strong> 8小时约150,000-200,000韩元</li>
+                        <li><strong>优势：</strong> 灵活安排行程，适合时间紧张的游客</li>
+                        <li><strong>预订方式：</strong> 酒店前台、旅行社或在线平台</li>
+                    </ul>
+                    
+                    <h4>打车软件：</h4>
+                    <ul>
+                        <li><strong>Kakao T：</strong> 韩国最主要的打车软件</li>
+                        <li><strong>下载使用：</strong> 需要韩国手机号注册，建议请酒店帮助</li>
+                        <li><strong>费用参考：</strong> 起步价3,800韩元，市区内一般8,000-15,000韩元</li>
+                    </ul>
+                    
+                    <div class="highlight">
+                        <strong>💡 语言沟通：</strong> 建议使用Papago翻译软件与司机沟通，或提前准备目的地的韩文地址。
+                    </div>
+                </div>
+                
+                <div class="attraction-card">
+                    <h3>🚙 自驾租车</h3>
+                    <h4>租车要求：</h4>
+                    <ul>
+                        <li><strong>驾照：</strong> 中国驾照+国际驾照翻译件，或韩国临时驾照</li>
+                        <li><strong>年龄：</strong> 满21岁，驾龄1年以上</li>
+                        <li><strong>费用：</strong> 小型车约40,000-60,000韩元/天</li>
+                        <li><strong>保险：</strong> 建议购买全险</li>
+                    </ul>
+                    
+                    <h4>自驾注意事项：</h4>
+                    <ul>
+                        <li><strong>交通规则：</strong> 右舵驾驶，靠右行驶</li>
+                        <li><strong>停车：</strong> 主要景点都有停车场，费用约2,000-5,000韩元</li>
+                        <li><strong>加油：</strong> 自助加油，可刷卡或现金</li>
+                        <li><strong>导航：</strong> 强烈推荐使用Naver Map导航</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 实用信息 -->
+            <section id="practical" class="section">
+                <h2>ℹ️ 实用信息</h2>
+                <p style="text-align: center; margin-bottom: 2rem; color: #666;">旅行前必知的实用信息，让您的济州岛之旅更加顺利</p>
+                
+                <div class="app-recommendation">
+                    <h3>🗣️ 语言神器：Papago翻译</h3>
+                    <p>Papago是韩国Naver公司开发的翻译软件，在韩语翻译方面准确度极大！</p>
+                    
+                    <div class="app-grid">
+                        <div class="app-card">
+                            <h4>🌟 Papago的强大功能</h4>
+                            <ul>
+                                <li><strong>图片翻译：</strong> 拍照即可翻译菜单、路牌、商品说明</li>
+                                <li><strong>语音翻译：</strong> 实时语音对话翻译，与当地人交流无障碍</li>
+                                <li><strong>文本翻译：</strong> 支持中韩互译，准确度高</li>
+                                <li><strong>离线翻译：</strong> 下载离线包，无网络也能使用</li>
+                                <li><strong>发音功能：</strong> 标准韩语发音，帮助学习基本用语</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="app-card">
+                            <h4>📱 下载和使用指南</h4>
+                            <ol>
+                                <li><strong>下载：</strong> App Store或Google Play搜索"Papago"</li>
+                                <li><strong>设置：</strong> 选择中文-韩文翻译模式</li>
+                                <li><strong>图片翻译：</strong> 点击相机图标，对准文字拍照</li>
+                                <li><strong>语音翻译：</strong> 点击麦克风，说话后自动翻译</li>
+                                <li><strong>常用语：</strong> 收藏常用句子，如"多少钱？"、"厕所在哪里？"</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight">
+                        <strong>💡 实用建议：</strong> 出发前下载Papago并熟悉基本操作，准备一些常用韩语短句，如"안녕하세요"（您好）、"감사합니다"（谢谢）。
+                    </div>
+                </div>
+                
+                <div class="attractions-grid">
+                    <div class="attraction-card">
+                        <h3>🛂 签证信息</h3>
+                        <h4>济州岛免签政策：</h4>
+                        <ul>
+                            <li><strong>适用人群：</strong> 持中国大陆护照的游客</li>
+                            <li><strong>停留时间：</strong> 最长30天</li>
+                            <li><strong>入境要求：</strong> 
+                                <ul>
+                                    <li>护照有效期6个月以上</li>
+                                    <li>往返机票</li>
+                                    <li>酒店预订确认单</li>
+                                    <li>足够的旅游资金证明</li>
+                                </ul>
+                            </li>
+                            <li><strong>注意事项：</strong> 免签仅限济州岛，不能前往韩国其他地区</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="attraction-card">
+                        <h3>💰 货币与支付</h3>
+                        <h4>货币兑换：</h4>
+                        <ul>
+                            <li><strong>货币：</strong> 韩元（KRW），1人民币≈200韩元（汇率浮动）（10000KRM约等于50RMB）</li>
+                            <li><strong>兑换地点：</strong> 机场、银行等旅游区</li>
+                            <li><strong>建议：</strong> 提前在国内银行兑换部分韩元。冷知识：如果所带现金不够，上岛换现金是要收手续费</li>
+                            <li><strong>个人花费💲：</strong> 一对情侣兑换了4000RMB</li>
+                        </ul>
+                        
+                        <h4>支付方式：</h4>
+                        <ul>
+                            <li><strong>现金：</strong> 小商店、市场、公交车需要现金</li>
+                            <li><strong>银联卡：</strong> 大部分商店和ATM支持</li>
+                            <li><strong>信用卡：</strong> Visa、MasterCard广泛接受</li>
+                            <li><strong>移动支付：</strong> 支付宝、微信支付全球有礼在部分商店（免税店）可用</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="attraction-card">
+                        <h3>📶 通讯网络</h3>
+                        <h4>上网方案：</h4>
+                        <ul>
+                            <li><strong>租赁WiFi：</strong> 
+                                <ul>
+                                    <li>机场租赁，约15,000-20,000韩元/天</li>
+                                    <li>电池续航8-10小时</li>
+                                    <li>可多人共享</li>
+                                </ul>
+                            </li>
+                            <li><strong>购买电话卡：</strong> 
+                                <ul>
+                                    <li>机场或便利店购买或某宝购买</li>
+                                    <li>3天卡约25,000韩元</li>
+                                    <li>包含通话和流量</li>
+                                    <li>tips：可提前在某宝购买</li>
+                                </ul>
+                            </li>
+                            <li><strong>国际漫游：</strong> 联系国内运营商开通</li>
+                        </ul>
+                        
+                        <div class="highlight">
+                            <strong>💡 推荐：</strong> 购买当地电话卡最划算，网速快且稳定。
+                        </div>
+                    </div>
+                    
+                    <div class="attraction-card">
+                        <h3>🏨 住宿建议</h3>
+                        <h4>主要住宿区域：</h4>
+                        <ul>
+                            <li><strong>济州市区：</strong> 
+                                <ul>
+                                    <li>交通便利，餐厅商店多</li>
+                                    <li>适合首次访问的游客</li>
+                                    <li>价格相对便宜</li>
+                                    <li>tips：亚洲酒店楼下CU便利店对国人比较友好</li>
+                                </ul>
+                            </li>
+                            <li><strong>中文旅游区：</strong> 
+                                <ul>
+                                    <li>度假村集中，设施完善</li>
+                                    <li>适合度假休闲</li>
+                                    <li>价格较高</li>
+                                </ul>
+                            </li>
+                            <li><strong>西归浦：</strong> 
+                                <ul>
+                                    <li>靠近瀑布景点</li>
+                                    <li>相对安静</li>
+                                    <li>适合深度游</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="attraction-card">
+                        <h3>🆘 紧急情况</h3>
+                        <h4>重要电话：</h4>
+                        <ul>
+                            <li><strong>报警：</strong> 112</li>
+                            <li><strong>火警：</strong> 119</li>
+                            <li><strong>医疗急救：</strong> 119</li>
+                            <li><strong>旅游热线：</strong> 1330（提供中文服务）</li>
+                            <li><strong>中国领事馆：</strong> +82-64-738-8874</li>
+                        </ul>
+                        
+                        <h4>常用韩语：</h4>
+                        <ul>
+                            <li><strong>도와주세요</strong> (도와주세요) - 请帮助我</li>
+                            <li><strong>병원</strong> (병원) - 医院</li>
+                            <li><strong>경찰서</strong> (경찰서) - 警察局</li>
+                            <li><strong>중국사람입니다</strong> - 我是中国人</li>
+                        </ul>
+                        
+                        <div class="highlight">
+                            <strong>💡 建议：</strong> 将重要电话存入手机，并使用Papago翻译紧急情况说明。
+                        </div>
+                    </div>
+                    
+                    <div class="attraction-card">
+                        <h3>🍽️ 饮食文化</h3>
+                        <h4>济州岛特色美食：</h4>
+                        <ul>
+                            <li><strong>黑猪肉：</strong> 济州岛特产，肉质鲜美</li>
+                            <li><strong>海鲜料理：</strong> 新鲜海胆、鲍鱼、海螺</li>
+                            <li><strong>橘子产品：</strong> 橘子巧克力、橘子茶</li>
+                            <li><strong>海女料理：</strong> 海女亲自捕捞的海鲜</li>
+                        </ul>
+                        
+                        <h4>用餐礼仪：</h4>
+                        <ul>
+                            <li>用餐前说"잘 먹겠습니다"（我要开动了）</li>
+                            <li>用餐后说"잘 먹었습니다"（吃得很好）</li>
+                            <li>不要将筷子插在米饭上</li>
+                            <li>小费不是必须的</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="warning">
+                    <strong>⚠️ 重要提醒：</strong> 以上信息可能随季节或政策调整而变化，请以官方最新公布信息为准。建议出发前再次确认景点开放时间、门票价格等信息。
+                </div>
+            </section>
+
+            <!-- 联系我们 -->
+            <section id="contact" class="section">
+                <h2>📞 关于我们</h2>
+                <div style="text-align: center;">
+                    <p style="font-size: 1.2rem; margin-bottom: 2rem;">济州岛轻松游致力于为中国游客提供最实用、最便捷的济州岛旅游信息</p>
+                    
+                    <div class="attraction-card" style="max-width: 600px; margin: 0 auto;">
+                        <h3>🎯 我们的使命</h3>
+                        <p>让每一位中国游客都能轻松、便捷地探索济州岛的美丽，享受无忧的旅行体验。我们专注于提供准确的交通信息、实用的工具推荐和贴心的旅行建议。</p>
+                        
+                        <h3 style="margin-top: 2rem;">📧 联系方式</h3>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin: 1rem 0;">🐦 小红书：@积极乐观向上</li>
+                        </ul>
+                        
+                        <div class="highlight" style="margin-top: 2rem;">
+                            <strong>💡 反馈建议：</strong> 如果您在使用过程中发现信息有误或有更好的建议，欢迎随时联系我们。您的反馈将帮助我们为更多游客提供更好的服务！
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 济州岛轻松游. 专为中国游客打造的便捷旅游指南</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">本网站信息仅供参考，实际情况请以官方最新公布为准</p>
+        </div>
+    </footer>
+
+    <script>
+        // 平滑滚动导航
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'linear-gradient(135deg, #4a90e2, #7bb3f0)';
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.2)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #4a90e2, #7bb3f0)';
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>

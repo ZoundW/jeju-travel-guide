@@ -1,0 +1,79 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- 天空渐变背景 -->
+  <defs>
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#98D8E8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B0E0E6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="mountainGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#8FBC8F;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#556B2F;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="seaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#40E0D0;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#008B8B;stop-opacity:0.9" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 天空背景 -->
+  <rect width="1200" height="600" fill="url(#skyGradient)"/>
+  
+  <!-- 云朵 -->
+  <ellipse cx="200" cy="80" rx="40" ry="20" fill="white" opacity="0.8"/>
+  <ellipse cx="220" cy="75" rx="35" ry="18" fill="white" opacity="0.8"/>
+  <ellipse cx="180" cy="75" rx="30" ry="15" fill="white" opacity="0.8"/>
+  
+  <ellipse cx="800" cy="60" rx="45" ry="22" fill="white" opacity="0.7"/>
+  <ellipse cx="825" cy="55" rx="38" ry="20" fill="white" opacity="0.7"/>
+  <ellipse cx="775" cy="55" rx="32" ry="16" fill="white" opacity="0.7"/>
+  
+  <ellipse cx="1000" cy="100" rx="35" ry="18" fill="white" opacity="0.6"/>
+  <ellipse cx="1020" cy="95" rx="30" ry="15" fill="white" opacity="0.6"/>
+  
+  <!-- 汉拿山轮廓 -->
+  <path d="M 0 400 Q 200 250 400 300 Q 600 200 800 280 Q 1000 220 1200 350 L 1200 600 L 0 600 Z" fill="url(#mountainGradient)"/>
+  
+  <!-- 海洋 -->
+  <path d="M 0 450 Q 300 430 600 440 Q 900 450 1200 435 L 1200 600 L 0 600 Z" fill="url(#seaGradient)"/>
+  
+  <!-- 海浪效果 -->
+  <path d="M 0 460 Q 150 450 300 455 Q 450 460 600 450 Q 750 445 900 455 Q 1050 460 1200 450" stroke="white" stroke-width="2" fill="none" opacity="0.6"/>
+  <path d="M 0 470 Q 200 465 400 470 Q 600 475 800 465 Q 1000 460 1200 470" stroke="white" stroke-width="1.5" fill="none" opacity="0.4"/>
+  
+  <!-- 济州岛特色元素 -->
+  <!-- 橘子树 -->
+  <circle cx="150" cy="380" r="25" fill="#228B22"/>
+  <circle cx="145" cy="385" r="4" fill="#FF8C00"/>
+  <circle cx="155" cy="375" r="4" fill="#FF8C00"/>
+  <circle cx="150" cy="390" r="4" fill="#FF8C00"/>
+  <rect x="148" y="405" width="4" height="15" fill="#8B4513"/>
+  
+  <!-- 风车 -->
+  <rect x="950" y="320" width="4" height="60" fill="white"/>
+  <line x1="952" y1="330" x2="942" y2="320" stroke="white" stroke-width="2"/>
+  <line x1="952" y1="330" x2="962" y2="320" stroke="white" stroke-width="2"/>
+  <line x1="952" y1="330" x2="952" y2="315" stroke="white" stroke-width="2"/>
+  <circle cx="952" cy="330" r="3" fill="white"/>
+  
+  <!-- 海鸥 -->
+  <path d="M 400 120 Q 405 115 410 120" stroke="white" stroke-width="2" fill="none"/>
+  <path d="M 395 120 Q 400 115 405 120" stroke="white" stroke-width="2" fill="none"/>
+  
+  <path d="M 700 140 Q 705 135 710 140" stroke="white" stroke-width="2" fill="none"/>
+  <path d="M 695 140 Q 700 135 705 140" stroke="white" stroke-width="2" fill="none"/>
+  
+  <!-- 太阳 -->
+  <circle cx="1050" cy="100" r="30" fill="#FFD700" opacity="0.8"/>
+  <circle cx="1050" cy="100" r="25" fill="#FFA500" opacity="0.6"/>
+  
+  <!-- 太阳光线 -->
+  <line x1="1050" y1="50" x2="1050" y2="40" stroke="#FFD700" stroke-width="3" opacity="0.7"/>
+  <line x1="1050" y1="160" x2="1050" y2="150" stroke="#FFD700" stroke-width="3" opacity="0.7"/>
+  <line x1="1000" y1="100" x2="990" y2="100" stroke="#FFD700" stroke-width="3" opacity="0.7"/>
+  <line x1="1110" y1="100" x2="1100" y2="100" stroke="#FFD700" stroke-width="3" opacity="0.7"/>
+  <line x1="1015" y1="65" x2="1008" y2="58" stroke="#FFD700" stroke-width="2" opacity="0.7"/>
+  <line x1="1085" y1="135" x2="1092" y2="142" stroke="#FFD700" stroke-width="2" opacity="0.7"/>
+  <line x1="1085" y1="65" x2="1092" y2="58" stroke="#FFD700" stroke-width="2" opacity="0.7"/>
+  <line x1="1015" y1="135" x2="1008" y2="142" stroke="#FFD700" stroke-width="2" opacity="0.7"/>
+</svg>
