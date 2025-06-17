@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>济州岛轻松游 - 您的便捷之旅从这里开始</title>
+    <title>济州岛最完整最直观的攻略</title>
     <style>
         * {
             margin: 0;
@@ -67,15 +67,105 @@
         }
         
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/济州岛首页背景.svg');
+            position: relative;
             height: 60vh;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            color: white;
+        }
+        
+        .hero-slides {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
             background-size: cover;
             background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-slide.active {
+            opacity: 1;
+        }
+        
+        .hero-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3));
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            padding: 1rem;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background 0.3s;
+            z-index: 3;
+        }
+        
+        .hero-nav:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .hero-prev {
+            left: 2rem;
+        }
+        
+        .hero-next {
+            right: 2rem;
+        }
+        
+        .hero-indicators {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 3;
+        }
+        
+        .hero-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .hero-indicator.active {
+            background: white;
         }
         
         .attraction-image {
@@ -150,9 +240,7 @@
             transition: transform 0.3s;
         }
         
-        .attraction-card:hover {
-            transform: translateY(-5px);
-        }
+
         
         .attraction-card h3 {
             color: #4a90e2;
@@ -228,18 +316,178 @@
             margin-top: 3rem;
         }
         
+        /* 增强的响应式设计 */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .attractions-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .app-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
         @media (max-width: 768px) {
             .nav-links {
-                flex-direction: column;
-                gap: 1rem;
+                display: none; /* 暂时隐藏，后续可以添加汉堡菜单 */
+            }
+            
+            .logo {
+                font-size: 1.4rem;
+            }
+            
+            .hero {
+                height: 50vh;
+                padding: 0 1rem;
+            }
+            
+            .hero-nav {
+                font-size: 1.5rem;
+                padding: 0.8rem;
+            }
+            
+            .hero-prev {
+                left: 1rem;
+            }
+            
+            .hero-next {
+                right: 1rem;
             }
             
             .hero-content h1 {
                 font-size: 2rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .section {
+                margin: 1rem 0;
+                padding: 2rem 0;
+            }
+            
+            .section h2 {
+                font-size: 2rem;
+                margin-bottom: 2rem;
             }
             
             .attractions-grid {
                 grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .attraction-card {
+                padding: 1rem;
+            }
+            
+            .attraction-image {
+                height: 180px;
+            }
+            
+            .food-image {
+                height: 120px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 10px;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 0.9rem;
+            }
+            
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+            
+            .section h2 {
+                font-size: 1.5rem;
+            }
+            
+            .attraction-card {
+                padding: 0.8rem;
+            }
+            
+            .attraction-image {
+                height: 150px;
+            }
+        }
+        
+        /* 添加平滑滚动效果 */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* 增强卡片悬停效果 */
+        .attraction-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .attraction-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        /* 图片加载优化 */
+        .attraction-image, .food-image {
+            transition: transform 0.3s ease;
+        }
+        
+        .attraction-image:hover, .food-image:hover {
+            transform: scale(1.05);
+        }
+        
+        /* 返回顶部按钮样式 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: #357abd;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
             }
         }
     </style>
@@ -262,10 +510,59 @@
     <main>
         <!-- 首页 -->
         <section id="home" class="hero">
-            <div class="hero-content">
-                <h1>欢迎来到济州岛！</h1>
-                <p>您的便捷之旅从这里开始 - 最实用的济州岛旅游指南</p>
-                <a href="#attractions" class="cta-button">开始探索</a>
+            <div class="hero-slides">
+                <div class="hero-slide active" style="background-image: url('images/城山日出峰.jpg')">
+                    <div class="hero-content">
+                        <h1>城山日出峰</h1>
+                        <p>济州岛标志性景点，观赏壮丽日出的最佳地点</p>
+                        <a href="#attractions" class="cta-button">开始探索</a>
+                    </div>
+                </div>
+                
+                <div class="hero-slide" style="background-image: url('images/狭才海滩.JPG')">
+                    <div class="hero-content">
+                        <h1>狭才海滩</h1>
+                        <p>金色沙滩与碧蓝海水，享受济州岛的海滨风光</p>
+                        <a href="#attractions" class="cta-button">开始探索</a>
+                    </div>
+                </div>
+                
+                <div class="hero-slide" style="background-image: url('images/风车海滩1.jpg')">
+                    <div class="hero-content">
+                        <h1>风车海滩</h1>
+                        <p>独特的风车景观，感受济州岛的浪漫风情</p>
+                        <a href="#attractions" class="cta-button">开始探索</a>
+                    </div>
+                </div>
+                
+                <div class="hero-slide" style="background-image: url('images/牛岛快艇1.jpg')">
+                    <div class="hero-content">
+                        <h1>牛岛之旅</h1>
+                        <p>乘坐快艇前往牛岛，体验海上冒险的乐趣</p>
+                        <a href="#attractions" class="cta-button">开始探索</a>
+                    </div>
+                </div>
+                
+                <div class="hero-slide" style="background-image: url('images/济州岛街道1.jpg')">
+                    <div class="hero-content">
+                        <h1>济州岛街景</h1>
+                        <p>漫步济州岛街头，感受当地的文化氛围</p>
+                        <a href="#attractions" class="cta-button">开始探索</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 导航按钮 -->
+            <button class="hero-nav hero-prev" onclick="changeSlide(-1)">‹</button>
+            <button class="hero-nav hero-next" onclick="changeSlide(1)">›</button>
+            
+            <!-- 指示器 -->
+            <div class="hero-indicators">
+                <span class="hero-indicator active" onclick="currentSlide(1)"></span>
+                <span class="hero-indicator" onclick="currentSlide(2)"></span>
+                <span class="hero-indicator" onclick="currentSlide(3)"></span>
+                <span class="hero-indicator" onclick="currentSlide(4)"></span>
+                <span class="hero-indicator" onclick="currentSlide(5)"></span>
             </div>
         </section>
 
@@ -1018,6 +1315,11 @@
         </div>
     </main>
 
+    <!-- 返回顶部按钮 -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        ↑
+    </button>
+
     <footer>
         <div class="container">
             <p>&copy; 2025 济州岛轻松游. 专为中国游客打造的便捷旅游指南</p>
@@ -1026,7 +1328,98 @@
     </footer>
 
     <script>
-        // 平滑滚动导航
+        // 英雄区域轮播功能
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const indicators = document.querySelectorAll('.hero-indicator');
+        const totalSlides = slides.length;
+        
+        // 自动轮播
+        function autoSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
+            showSlide(currentSlideIndex);
+        }
+        
+        // 显示指定幻灯片
+        function showSlide(index) {
+            // 移除所有活动状态
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+            
+            // 添加活动状态
+            slides[index].classList.add('active');
+            indicators[index].classList.add('active');
+        }
+        
+        // 手动切换幻灯片
+        function changeSlide(direction) {
+            currentSlideIndex += direction;
+            
+            if (currentSlideIndex >= totalSlides) {
+                currentSlideIndex = 0;
+            } else if (currentSlideIndex < 0) {
+                currentSlideIndex = totalSlides - 1;
+            }
+            
+            showSlide(currentSlideIndex);
+        }
+        
+        // 点击指示器切换
+        function currentSlide(index) {
+            currentSlideIndex = index - 1;
+            showSlide(currentSlideIndex);
+        }
+        
+        // 启动自动轮播（每4秒切换一次）
+        setInterval(autoSlide, 4000);
+        
+        // 触摸滑动支持（移动端）
+        let startX = 0;
+        let endX = 0;
+        
+        document.querySelector('.hero').addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+        });
+        
+        document.querySelector('.hero').addEventListener('touchend', function(e) {
+            endX = e.changedTouches[0].clientX;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = startX - endX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // 向左滑动，显示下一张
+                    changeSlide(1);
+                } else {
+                    // 向右滑动，显示上一张
+                    changeSlide(-1);
+                }
+            }
+        }
+        
+        // 返回顶部功能
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        // 显示/隐藏返回顶部按钮
+        window.addEventListener('scroll', function() {
+            const backToTopButton = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        // 平滑滚动到锚点
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1038,18 +1431,6 @@
                     });
                 }
             });
-        });
-        
-        // 导航栏滚动效果
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'linear-gradient(135deg, #4a90e2, #7bb3f0)';
-                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.2)';
-            } else {
-                header.style.background = 'linear-gradient(135deg, #4a90e2, #7bb3f0)';
-                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
-            }
         });
     </script>
 </body>
