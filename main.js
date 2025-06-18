@@ -83,24 +83,51 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// 小红书评论展示功能
-let reviewsData = {};
+// 小红书评论展示功能 - 嵌入数据版本
+let reviewsData = {
+  "attractions": {
+    "name": "热门景点",
+    "items": [
+      {
+        "keyword": "咸得海滩",
+        "title": "📍济州岛咸德海滩| 巨漂亮无滤镜的果冻海🌊",
+        "author": "Winnng2",
+        "likes": 325,
+        "image_url": "https://sns-webpic-qc.xhscdn.com/202506181422/4313999ce7a44f6e6ab18c0687e7286b/1040g2sg318qm8mokk67043ptd6urprhs7gdu8r8!nc_n_webp_mw_1",
+        "note_url": "https://www.xiaohongshu.com/explore/67093797000000002a03768e"
+      },
+      {
+        "keyword": "城山日出峰",
+        "title": "免费机位‼️城山日出峰人生照片很容易错过",
+        "author": "陈雅法Yaffa",
+        "likes": 184,
+        "image_url": "https://sns-webpic-qc.xhscdn.com/202506181422/17b0ada1ad1831750501df65e048a919/1040g2sg318ih06co3u6g400r49j27nk8gd7pcso!nc_n_webp_mw_1",
+        "note_url": "https://www.xiaohongshu.com/explore/6700db48000000001b021349"
+      }
+      // 添加更多数据...
+    ]
+  },
+  "food": {
+    "name": "美食推荐", 
+    "items": [
+      // 添加美食数据...
+    ]
+  }
+  // 添加其他分类...
+};
+
 let allReviews = [];
 
-async function loadReviewsData() {
+// 修改为直接使用嵌入数据
+function loadReviewsData() {
     try {
-        const response = await fetch('processed_reviews.json');
-        if (!response.ok) {
-            throw new Error('无法加载评论数据');
-        }
-        reviewsData = await response.json();
+        console.log('使用嵌入的评论数据...');
         
-        // 修正数据结构处理 - 正确处理JSON数据
+        // 处理嵌入的数据
         allReviews = [];
         Object.keys(reviewsData).forEach(categoryKey => {
             const category = reviewsData[categoryKey];
             if (category && category.items && Array.isArray(category.items)) {
-                // 为每个item添加分类信息
                 category.items.forEach(item => {
                     item.category = categoryKey;
                 });
@@ -108,16 +135,16 @@ async function loadReviewsData() {
             }
         });
         
-        // 按点赞数排序
+        console.log('处理后的评论数据:', allReviews.length, '条');
         allReviews.sort((a, b) => (b.likes || 0) - (a.likes || 0));
-        
-        console.log('加载的评论数据:', allReviews.length, '条'); // 调试信息
         displayReviews('all');
         
     } catch (error) {
-        console.error('加载评论数据失败:', error);
-        document.getElementById('reviews-container').innerHTML = 
-            '<p style="text-align: center; color: #666;">暂时无法加载评论数据，请稍后再试</p>';
+        console.error('处理评论数据失败:', error);
+        const container = document.getElementById('reviews-container');
+        if (container) {
+            container.innerHTML = `<div style="text-align: center; color: #666; padding: 2rem;"><p>⚠️ 评论数据处理失败</p></div>`;
+        }
     }
 }
 
@@ -137,10 +164,10 @@ function displayReviews(category) {
         reviews = allReviews.filter(review => review.category === category).slice(0, 12);
     }
     
-    console.log('显示评论:', category, reviews.length, '条'); // 调试信息
+    console.log(`显示 ${category} 分类的评论:`, reviews.length, '条');
     
     if (reviews.length === 0) {
-        container.innerHTML = '<p style="text-align: center; color: #666;">该分类暂无评论数据</p>';
+        container.innerHTML = '<div style="text-align: center; color: #666; padding: 2rem;"><p>该分类暂无评论数据</p></div>';
         return;
     }
     
@@ -183,9 +210,28 @@ function initReviewsFilter() {
     });
 }
 
+// 确保DOM加载完成后执行
 document.addEventListener('DOMContentLoaded', function() {
-    if (document.getElementById('reviews-container')) {
+    console.log('DOM加载完成，检查reviews-container...');
+    const container = document.getElementById('reviews-container');
+    if (container) {
+        console.log('找到reviews-container，开始初始化...');
+        loadReviewsData();
+        initReviewsFilter();
+    } else {
+        console.error('未找到reviews-container元素');
+    }
+});
+
+// 如果DOM已经加载完成，立即执行
+if (document.readyState === 'loading') {
+    // DOM还在加载中，等待DOMContentLoaded事件
+} else {
+    // DOM已经加载完成，立即执行
+    console.log('DOM已加载，立即初始化reviews...');
+    const container = document.getElementById('reviews-container');
+    if (container) {
         loadReviewsData();
         initReviewsFilter();
     }
-});
+}
