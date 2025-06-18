@@ -95,9 +95,12 @@ async function loadReviewsData() {
         }
         reviewsData = await response.json();
         
+        // 修正数据结构处理
         allReviews = [];
         Object.values(reviewsData).forEach(category => {
-            allReviews.push(...category.items);
+            if (category.items && Array.isArray(category.items)) {
+                allReviews.push(...category.items);
+            }
         });
         
         allReviews.sort((a, b) => (b.likes || 0) - (a.likes || 0));
@@ -118,12 +121,16 @@ function displayReviews(category) {
     
     if (category === 'all') {
         reviews = allReviews.slice(0, 12);
-    } else if (reviewsData[category]) {
-        reviews = reviewsData[category].items;
+    } else {
+        // 修正分类筛选逻辑
+        const categoryData = reviewsData[category];
+        if (categoryData && categoryData.items) {
+            reviews = categoryData.items.slice(0, 12);
+        }
     }
     
     if (reviews.length === 0) {
-        container.innerHTML = '<p style="text-align: center; color: #666;">暂无该分类的评论数据</p>';
+        container.innerHTML = '<p style="text-align: center; color: #666;">暂时无法加载评论数据，请稍后再试</p>';
         return;
     }
     
