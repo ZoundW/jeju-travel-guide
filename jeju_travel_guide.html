@@ -3,6 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; img-src 'self' data: https:; script-src 'self' https:; style-src 'self' 'unsafe-inline' https:;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <script>
+      if (location.protocol !== 'https:') {
+        location.href = 'https://' + location.hostname + location.pathname + location.search;
+      }
+    </script>
     <title>济州岛最完整最直观的攻略</title>
     <style>
         * {
