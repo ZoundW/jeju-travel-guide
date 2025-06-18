@@ -95,15 +95,23 @@ async function loadReviewsData() {
         }
         reviewsData = await response.json();
         
-        // 修正数据结构处理
+        // 修正数据结构处理 - 正确处理JSON数据
         allReviews = [];
-        Object.values(reviewsData).forEach(category => {
-            if (category.items && Array.isArray(category.items)) {
+        Object.keys(reviewsData).forEach(categoryKey => {
+            const category = reviewsData[categoryKey];
+            if (category && category.items && Array.isArray(category.items)) {
+                // 为每个item添加分类信息
+                category.items.forEach(item => {
+                    item.category = categoryKey;
+                });
                 allReviews.push(...category.items);
             }
         });
         
+        // 按点赞数排序
         allReviews.sort((a, b) => (b.likes || 0) - (a.likes || 0));
+        
+        console.log('加载的评论数据:', allReviews.length, '条'); // 调试信息
         displayReviews('all');
         
     } catch (error) {
@@ -115,7 +123,10 @@ async function loadReviewsData() {
 
 function displayReviews(category) {
     const container = document.getElementById('reviews-container');
-    if (!container) return;
+    if (!container) {
+        console.error('找不到reviews-container元素');
+        return;
+    }
     
     let reviews = [];
     
@@ -123,14 +134,13 @@ function displayReviews(category) {
         reviews = allReviews.slice(0, 12);
     } else {
         // 修正分类筛选逻辑
-        const categoryData = reviewsData[category];
-        if (categoryData && categoryData.items) {
-            reviews = categoryData.items.slice(0, 12);
-        }
+        reviews = allReviews.filter(review => review.category === category).slice(0, 12);
     }
     
+    console.log('显示评论:', category, reviews.length, '条'); // 调试信息
+    
     if (reviews.length === 0) {
-        container.innerHTML = '<p style="text-align: center; color: #666;">暂时无法加载评论数据，请稍后再试</p>';
+        container.innerHTML = '<p style="text-align: center; color: #666;">该分类暂无评论数据</p>';
         return;
     }
     
